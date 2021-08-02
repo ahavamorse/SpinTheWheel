@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Reward {
+struct Reward: Decodable {
     var displayText: String
     var value: Int
 }

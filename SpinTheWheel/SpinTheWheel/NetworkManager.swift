@@ -12,7 +12,7 @@ enum NetworkManager {
     
     static let urlString = "http://mockbin.org/bin/dc24c4de-102f-49bf-9c80-9ed52d4ea7f6"
     
-    func getRewards(completed: @escaping (Result<[Reward], Error>) -> Void) {
+    func getRewards(completed: @escaping (Result<[Reward], NetworkingError>) -> Void) {
         guard let url = URL(string: NetworkManager.urlString) else {
             completed(.failure(.invalidUrl))
             return
