@@ -12,6 +12,7 @@
 		0CDE7F5326B8902000E3ECBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CDE7F5226B8902000E3ECBD /* Assets.xcassets */; };
 		0CDE7F5626B8902000E3ECBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CDE7F5426B8902000E3ECBD /* LaunchScreen.storyboard */; };
 		0CDE7F5E26B8908600E3ECBD /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE7F5D26B8908600E3ECBD /* MenuViewController.swift */; };
+		0CDE7F6026B899B300E3ECBD /* WheelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE7F5F26B899B300E3ECBD /* WheelViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		0CDE7F5526B8902000E3ECBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CDE7F5726B8902000E3ECBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CDE7F5D26B8908600E3ECBD /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		0CDE7F5F26B899B300E3ECBD /* WheelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				0CDE7F5D26B8908600E3ECBD /* MenuViewController.swift */,
+				0CDE7F5F26B899B300E3ECBD /* WheelViewController.swift */,
 				0CDE7F4926B8901D00E3ECBD /* AppDelegate.swift */,
 				0CDE7F4B26B8901D00E3ECBD /* SceneDelegate.swift */,
 				0CDE7F5226B8902000E3ECBD /* Assets.xcassets */,
@@ -134,6 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CDE7F6026B899B300E3ECBD /* WheelViewController.swift in Sources */,
 				0CDE7F4A26B8901D00E3ECBD /* AppDelegate.swift in Sources */,
 				0CDE7F5E26B8908600E3ECBD /* MenuViewController.swift in Sources */,
 				0CDE7F4C26B8901D00E3ECBD /* SceneDelegate.swift in Sources */,
