@@ -73,6 +73,6 @@ class MenuViewController: UIViewController {
     }
     
     @objc func spinButtonTapped() {
-        navigationController?.present(WheelViewController(), animated: true)
+        navigationController?.pushViewController(WheelViewController(), animated: true)
     }
 }
