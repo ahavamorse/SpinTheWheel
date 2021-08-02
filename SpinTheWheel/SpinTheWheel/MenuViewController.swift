@@ -62,7 +62,7 @@ class MenuViewController: UIViewController {
         spinButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 125),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             spinButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
