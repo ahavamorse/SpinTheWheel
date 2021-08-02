@@ -12,13 +12,27 @@ class MenuViewController: UIViewController {
     
     let titleLabel = UILabel()
     let spinButton = UIButton(frame: .zero)
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureNavigationBar()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureBackButton()
         configureViewController()
         configureTitleLabel()
         configureSpinButton()
         configureUI()
+    }
+    
+    private func configureNavigationBar() {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    private func configureBackButton() {
+        navigationItem.backBarButtonItem?.title = "Menu"
     }
     
     private func configureViewController() {
