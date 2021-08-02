@@ -16,9 +16,16 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
+        configureTitleLabel()
     }
     
     private func configureViewController() {
         view.backgroundColor = UIColor(named: "backgroundColor")
+    }
+    
+    private func configureTitleLabel() {
+        titleLabel.text = "Rewards Wheel"
+        titleLabel.textColor = .white
+        titleLabel.font = .preferredFont(forTextStyle: .largeTitle)
     }
 }
