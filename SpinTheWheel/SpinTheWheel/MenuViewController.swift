@@ -20,7 +20,6 @@ class MenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureBackButton()
         configureViewController()
         configureTitleLabel()
         configureSpinButton()
@@ -29,10 +28,6 @@ class MenuViewController: UIViewController {
     
     private func configureNavigationBar() {
         navigationController?.navigationBar.isHidden = true
-    }
-    
-    private func configureBackButton() {
-        navigationItem.backBarButtonItem?.title = "Menu"
     }
     
     private func configureViewController() {
