@@ -51,6 +51,8 @@ class MenuViewController: UIViewController {
         spinButton.setTitleColor(.label, for: .normal)
         spinButton.backgroundColor = UIColor(named: "buttonBackgroundColor")
         spinButton.layer.cornerRadius = 10
+        
+        spinButton.addTarget(self, action: #selector(spinButtonTapped), for: .touchUpInside)
     }
     
     private func configureUI() {
@@ -68,5 +70,9 @@ class MenuViewController: UIViewController {
             spinButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             spinButton.widthAnchor.constraint(equalToConstant: 225)
         ])
+    }
+    
+    @objc func spinButtonTapped() {
+        navigationController?.present(WheelViewController(), animated: true)
     }
 }
