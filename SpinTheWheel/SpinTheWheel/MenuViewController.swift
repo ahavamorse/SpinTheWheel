@@ -18,6 +18,7 @@ class MenuViewController: UIViewController {
         configureViewController()
         configureTitleLabel()
         configureSpinButton()
+        configureUI()
     }
     
     private func configureViewController() {
@@ -35,5 +36,20 @@ class MenuViewController: UIViewController {
         spinButton.titleLabel?.font = .preferredFont(forTextStyle: .title1)
         spinButton.setTitleColor(.label, for: .normal)
         spinButton.backgroundColor = UIColor(named: "buttonBackgroundColor")
+    }
+    
+    private func configureUI() {
+        view.addSubview(titleLabel)
+        view.addSubview(spinButton)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        spinButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            spinButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            spinButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
     }
 }
