@@ -36,6 +36,7 @@ class MenuViewController: UIViewController {
         spinButton.titleLabel?.font = .preferredFont(forTextStyle: .title1)
         spinButton.setTitleColor(.label, for: .normal)
         spinButton.backgroundColor = UIColor(named: "buttonBackgroundColor")
+        spinButton.layer.cornerRadius = 10
     }
     
     private func configureUI() {
@@ -49,7 +50,9 @@ class MenuViewController: UIViewController {
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             spinButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            spinButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            spinButton.heightAnchor.constraint(equalToConstant: 50),
+            spinButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            spinButton.widthAnchor.constraint(equalToConstant: 225)
         ])
     }
 }
