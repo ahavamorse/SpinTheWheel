@@ -11,7 +11,7 @@ import UIKit
 class MenuViewController: UIViewController {
     
     let titleLabel = UILabel()
-    let spinButton = UIButton(frame: .zero)
+    let spinButton = UIButton(type: .system)
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -46,7 +46,6 @@ class MenuViewController: UIViewController {
         spinButton.setTitleColor(.label, for: .normal)
         spinButton.backgroundColor = UIColor(named: "buttonBackgroundColor")
         spinButton.layer.cornerRadius = 10
-        
         spinButton.addTarget(self, action: #selector(spinButtonTapped), for: .touchUpInside)
     }
     
@@ -68,6 +67,9 @@ class MenuViewController: UIViewController {
     }
     
     @objc func spinButtonTapped() {
-        navigationController?.pushViewController(WheelViewController(), animated: true)
+        let wheelViewController = WheelViewController()
+        wheelViewController.wheelController = WheelController(delegate: self) { [weak self] in
+            self?.navigationController?.pushViewController(wheelViewController, animated: true)
+        }
     }
 }

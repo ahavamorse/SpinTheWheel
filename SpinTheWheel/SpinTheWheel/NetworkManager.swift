@@ -10,10 +10,10 @@ import Foundation
 
 enum NetworkManager {
     
-    static let getRewardsUrlString = "https://mockbin.org/bin/dc24c4de-102f-49bf-9c80-9ed52d4ea7f6"
-    
     static func getRewards(completed: @escaping (Result<[Reward], NetworkingError>) -> Void) {
-        guard let url = URL(string: NetworkManager.getRewardsUrlString) else {
+        let rewardsUrlString = "https://mockbin.org/bin/dc24c4de-102f-49bf-9c80-9ed52d4ea7f6"
+        
+        guard let url = URL(string: rewardsUrlString) else {
             completed(.failure(.invalidUrl))
             return
         }
