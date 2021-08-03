@@ -17,6 +17,7 @@ class WheelViewController: UIViewController {
         configureNavigationBar()
         configureViewController()
         configureSpinButton()
+        configureUI()
     }
     
     private func configureNavigationBar() {
@@ -38,6 +39,18 @@ class WheelViewController: UIViewController {
         spinButton.backgroundColor = UIColor(named: "buttonBackgroundColor")
         spinButton.layer.cornerRadius = 10
         spinButton.addTarget(self, action: #selector(spinButtonTapped), for: .touchUpInside)
+    }
+    
+    private func configureUI() {
+        view.addSubview(spinButton)
+        spinButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            spinButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25),
+            spinButton.heightAnchor.constraint(equalToConstant: 50),
+            spinButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            spinButton.widthAnchor.constraint(equalToConstant: 225)
+        ])
     }
     
     @objc func spinButtonTapped() {
