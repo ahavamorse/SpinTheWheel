@@ -80,6 +80,27 @@ class WheelViewController: UIViewController {
     }
     
     @objc func spinButtonTapped() {
+        spinWheel()
+    }
+    
+    func spinWheel() {
+        let numOfSections = wheelController.wheelView.numOfSections
+        // Always spin at least twice
+        var segmentSpinLength = 2 * Int(numOfSections)
+        // Spin an aditional random number of segments
+        segmentSpinLength += Int.random(in: 0...Int(numOfSections - 1))
         
+        UIView.animate(withDuration: 2.5, animations: { [weak self] in
+            guard let self = self else { return }
+            for _ in 1...segmentSpinLength {
+                
+                let currentAngle = self.wheelController.wheelView.currentAngle
+                let endAngle = currentAngle + self.wheelController.wheelView.angleIncrement
+                
+                self.wheelController.wheelView.transform = CGAffineTransform(rotationAngle: endAngle)
+                
+                self.wheelController.wheelView.currentAngle = endAngle
+            }
+        })
     }
 }

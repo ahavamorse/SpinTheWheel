@@ -11,6 +11,9 @@ import UIKit
 class WheelView: UIView {
     
     var rewards: [Reward]!
+    var currentAngle: CGFloat = 0
+    var numOfSections: CGFloat = 0
+    var angleIncrement: CGFloat = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,6 +27,8 @@ class WheelView: UIView {
     convenience init(rewards: [Reward]) {
         self.init(frame: .zero)
         self.rewards = rewards
+        self.numOfSections = CGFloat(rewards.count)
+        self.angleIncrement = .pi / (numOfSections / 2)
     }
     
     override func draw(_ rect: CGRect) {
@@ -32,10 +37,7 @@ class WheelView: UIView {
             let radius = rect.size.width / 2
             let center = CGPoint(x: radius, y: radius)
             
-            let numOfSections = CGFloat(rewards.count)
-            let angleIncrement: CGFloat = .pi / (numOfSections / 2)
-            
-            var currentAngle: CGFloat = 0
+            var currentAngle = -0.5 * .pi + (angleIncrement / 2)
 
             let colors = [UIColor.init(named: "wheelLightBackgroundColor")!.cgColor, UIColor.init(named: "wheelDarkBackgroundColor")!.cgColor]
             

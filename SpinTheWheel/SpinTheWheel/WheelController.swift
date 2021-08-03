@@ -32,7 +32,6 @@ class WheelController {
                 completed(rewards)
             case .failure(let error):
                 print(error)
-                // to do
                 let alert = UIAlertController(title: "Something Went Wrong", message: "There was a problem retrieving the rewards from the server. Please try again later.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                 self?.delegate?.navigationController?.present(alert, animated: true)
