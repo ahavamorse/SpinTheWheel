@@ -10,7 +10,10 @@ import UIKit
 
 class WheelViewController: UIViewController {
     
-    let spinButton = UIButton(frame: .zero)
+    let wheelRingImageView = UIImageView(image: UIImage(named: "wheelRingImage"))
+    let spinButton = UIButton(type: .system)
+    
+    var wheelController: WheelController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,10 +45,24 @@ class WheelViewController: UIViewController {
     }
     
     private func configureUI() {
+        view.addSubview(wheelController.wheelView)
+        view.addSubview(wheelRingImageView)
         view.addSubview(spinButton)
+        wheelController.wheelView.translatesAutoresizingMaskIntoConstraints = false
+        wheelRingImageView.translatesAutoresizingMaskIntoConstraints = false
         spinButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            wheelController.wheelView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            wheelController.wheelView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            wheelController.wheelView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
+            wheelController.wheelView.heightAnchor.constraint(equalTo: wheelController.wheelView.widthAnchor),
+            
+            wheelRingImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            wheelRingImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            wheelRingImageView.widthAnchor.constraint(equalTo: wheelController.wheelView.widthAnchor, constant: 45),
+            wheelRingImageView.heightAnchor.constraint(equalTo: wheelRingImageView.widthAnchor),
+            
             spinButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25),
             spinButton.heightAnchor.constraint(equalToConstant: 50),
             spinButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
