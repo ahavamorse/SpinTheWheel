@@ -53,6 +53,33 @@ class WheelView: UIView {
                 currentAngle = endAngle
             }
         }
+        
+        configureRewardLabels(in: rect)
     }
 
+    private func configureRewardLabels(in rect: CGRect) {
+        let center = CGPoint(x: rect.size.width / 2, y: rect.size.height / 2)
+        let numeralDistanceFromCenter = rect.size.width / 2.0 - 30
+        
+        for i in 0...rewards.count - 1 {
+            let displayString = rewards[i].displayText
+            
+            let xPosition = center.x + (cos(CGFloat(i) * angleIncrement) * numeralDistanceFromCenter)
+            let yPosition = center.y + (sin(CGFloat(i) * angleIncrement) * numeralDistanceFromCenter)
+            
+            let label = UILabel(frame: .zero)
+            label.text = displayString
+            label.font = .preferredFont(forTextStyle: .body)
+            label.textColor = .white
+            
+            label.transform = CGAffineTransform(rotationAngle: CGFloat(i) * angleIncrement)
+            
+            addSubview(label)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                label.centerXAnchor.constraint(equalTo: leadingAnchor, constant: xPosition),
+                label.centerYAnchor.constraint(equalTo: topAnchor, constant: yPosition)
+            ])
+        }
+    }
 }
