@@ -10,6 +10,7 @@ import UIKit
 
 class WheelViewController: UIViewController {
     
+    let wheelTickerImageView = UIImageView(image: UIImage(named: "wheelTickerImage"))
     let wheelRingImageView = UIImageView(image: UIImage(named: "wheelRingImage"))
     let spinButton = UIButton(type: .system)
     
@@ -47,7 +48,10 @@ class WheelViewController: UIViewController {
     private func configureUI() {
         view.addSubview(wheelController.wheelView)
         view.addSubview(wheelRingImageView)
+        view.addSubview(wheelTickerImageView)
         view.addSubview(spinButton)
+        
+        wheelTickerImageView.translatesAutoresizingMaskIntoConstraints = false
         wheelController.wheelView.translatesAutoresizingMaskIntoConstraints = false
         wheelRingImageView.translatesAutoresizingMaskIntoConstraints = false
         spinButton.translatesAutoresizingMaskIntoConstraints = false
@@ -62,6 +66,11 @@ class WheelViewController: UIViewController {
             wheelRingImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             wheelRingImageView.widthAnchor.constraint(equalTo: wheelController.wheelView.widthAnchor, constant: 45),
             wheelRingImageView.heightAnchor.constraint(equalTo: wheelRingImageView.widthAnchor),
+            
+            wheelTickerImageView.topAnchor.constraint(equalTo: wheelRingImageView.topAnchor, constant: -15),
+            wheelTickerImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            wheelTickerImageView.widthAnchor.constraint(equalToConstant: 35),
+            wheelTickerImageView.heightAnchor.constraint(equalToConstant: 55),
             
             spinButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25),
             spinButton.heightAnchor.constraint(equalToConstant: 50),
