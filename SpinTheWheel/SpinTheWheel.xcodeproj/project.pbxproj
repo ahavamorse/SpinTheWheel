@@ -16,6 +16,7 @@
 		0CDE7F6226B89ABD00E3ECBD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE7F6126B89ABD00E3ECBD /* NetworkManager.swift */; };
 		0CDE7F6426B8A2FB00E3ECBD /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE7F6326B8A2FB00E3ECBD /* Reward.swift */; };
 		0CDE7F6626B8A35600E3ECBD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE7F6526B8A35600E3ECBD /* Constants.swift */; };
+		0CDE7F6826B8D67300E3ECBD /* WheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE7F6726B8D67300E3ECBD /* WheelView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		0CDE7F6126B89ABD00E3ECBD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		0CDE7F6326B8A2FB00E3ECBD /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
 		0CDE7F6526B8A35600E3ECBD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0CDE7F6726B8D67300E3ECBD /* WheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			children = (
 				0CDE7F5D26B8908600E3ECBD /* MenuViewController.swift */,
 				0CDE7F5F26B899B300E3ECBD /* WheelViewController.swift */,
+				0CDE7F6726B8D67300E3ECBD /* WheelView.swift */,
 				0CDE7F6126B89ABD00E3ECBD /* NetworkManager.swift */,
 				0CDE7F6326B8A2FB00E3ECBD /* Reward.swift */,
 				0CDE7F6526B8A35600E3ECBD /* Constants.swift */,
@@ -148,6 +151,7 @@
 			files = (
 				0CDE7F6026B899B300E3ECBD /* WheelViewController.swift in Sources */,
 				0CDE7F4A26B8901D00E3ECBD /* AppDelegate.swift in Sources */,
+				0CDE7F6826B8D67300E3ECBD /* WheelView.swift in Sources */,
 				0CDE7F6226B89ABD00E3ECBD /* NetworkManager.swift in Sources */,
 				0CDE7F5E26B8908600E3ECBD /* MenuViewController.swift in Sources */,
 				0CDE7F6626B8A35600E3ECBD /* Constants.swift in Sources */,
