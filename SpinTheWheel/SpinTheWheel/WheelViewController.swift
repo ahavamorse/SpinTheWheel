@@ -10,11 +10,12 @@ import UIKit
 
 class WheelViewController: UIViewController {
     
-    let wheelTickerImageView = UIImageView(image: UIImage(named: "wheelTickerImage"))
-    let wheelRingImageView = UIImageView(image: UIImage(named: "wheelRingImage"))
+    let wheelTickerImageView = UIImageView(image: Images.wheelTicker)
+    let wheelRingImageView = UIImageView(image: Images.wheelRing)
     let spinButton = UIButton(type: .system)
     
     var wheelController: WheelController!
+    var currentRewardIndex: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +34,14 @@ class WheelViewController: UIViewController {
     }
     
     private func configureViewController() {
-        view.backgroundColor = UIColor(named: "viewBackgroundColor")
+        view.backgroundColor = Colors.viewBackground
     }
     
     private func configureSpinButton() {
         spinButton.setTitle("Spin!", for: .normal)
         spinButton.titleLabel?.font = .preferredFont(forTextStyle: .title1)
         spinButton.setTitleColor(.label, for: .normal)
-        spinButton.backgroundColor = UIColor(named: "buttonBackgroundColor")
+        spinButton.backgroundColor = Colors.buttonBackground
         spinButton.layer.cornerRadius = 10
         spinButton.addTarget(self, action: #selector(spinButtonTapped), for: .touchUpInside)
     }
@@ -81,14 +82,20 @@ class WheelViewController: UIViewController {
     
     @objc func spinButtonTapped() {
         spinWheel()
+        moveTicker()
     }
     
     func spinWheel() {
+        
         let numOfSections = wheelController.wheelView.numOfSections
         // Always spin at least twice
-        var segmentSpinLength = 2 * Int(numOfSections)
+        var segmentSpinLength = 2 * Int(numOfSections!)
         // Spin an aditional random number of segments
-        segmentSpinLength += Int.random(in: 0...Int(numOfSections - 1))
+        let rewardIndex = Int.random(in: 0...Int(numOfSections! - 1))
+        segmentSpinLength += 8 - rewardIndex
+        
+        currentRewardIndex += rewardIndex
+        currentRewardIndex %= Int(numOfSections!)
         
         UIView.animate(withDuration: 2.5, animations: { [weak self] in
             guard let self = self else { return }
@@ -100,6 +107,43 @@ class WheelViewController: UIViewController {
                 self.wheelController.wheelView.transform = CGAffineTransform(rotationAngle: endAngle)
                 
                 self.wheelController.wheelView.currentAngle = endAngle
+            }
+        }) { [weak self] _ in
+            guard let self = self else { return }
+            let reward = self.wheelController.wheelView.rewards[self.currentRewardIndex]
+            let alert = UIAlertController(title: "You Won!", message: "Congradulations! You won a reward of \(reward.value) \(reward.currency).", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yay!", style: .default, handler: nil))
+            self.navigationController?.present(alert, animated: true)
+        }
+    }
+    
+    func moveTicker() {
+        let highAngle: CGFloat = -0.25 * .pi
+        let lowAngle: CGFloat = -0.1 * .pi
+        
+        var currentTime: Double = 0
+        let longTimeInterval: Double = 0.1
+        let shortTimeInterval: Double = 0.1
+        
+        UIView.animateKeyframes(withDuration: 2.3, delay: 0, options: [], animations: {
+            UIView.addKeyframe(withRelativeStartTime: currentTime, relativeDuration: longTimeInterval) { [weak self] in
+                self?.wheelTickerImageView.transform = CGAffineTransform(rotationAngle: highAngle)
+                currentTime += longTimeInterval
+            }
+            
+            for _ in 1...21 {
+                UIView.addKeyframe(withRelativeStartTime: currentTime, relativeDuration: shortTimeInterval) { [weak self] in
+                    self?.wheelTickerImageView.transform = CGAffineTransform(rotationAngle: lowAngle)
+                    currentTime += shortTimeInterval
+                }
+                UIView.addKeyframe(withRelativeStartTime: currentTime, relativeDuration: shortTimeInterval) { [weak self] in
+                    self?.wheelTickerImageView.transform = CGAffineTransform(rotationAngle: highAngle)
+                    currentTime += shortTimeInterval
+                }
+            }
+            
+            UIView.addKeyframe(withRelativeStartTime: currentTime, relativeDuration: longTimeInterval) { [weak self] in
+                self?.wheelTickerImageView.transform = CGAffineTransform(rotationAngle: 0)
             }
         })
     }

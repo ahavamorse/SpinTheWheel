@@ -11,4 +11,6 @@ import Foundation
 struct Reward: Decodable {
     var displayText: String
     var value: Int
+    var id: String
+    var currency: String
 }
