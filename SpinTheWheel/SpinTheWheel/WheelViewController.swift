@@ -10,8 +10,8 @@ import UIKit
 
 class WheelViewController: UIViewController {
     
-    let wheelTickerImageView = UIImageView(image: UIImage(named: "wheelTickerImage"))
-    let wheelRingImageView = UIImageView(image: UIImage(named: "wheelRingImage"))
+    let wheelTickerImageView = UIImageView(image: Images.wheelTicker)
+    let wheelRingImageView = UIImageView(image: Images.wheelRing)
     let spinButton = UIButton(type: .system)
     
     var wheelController: WheelController!
@@ -33,14 +33,14 @@ class WheelViewController: UIViewController {
     }
     
     private func configureViewController() {
-        view.backgroundColor = UIColor(named: "viewBackgroundColor")
+        view.backgroundColor = Colors.viewBackground
     }
     
     private func configureSpinButton() {
         spinButton.setTitle("Spin!", for: .normal)
         spinButton.titleLabel?.font = .preferredFont(forTextStyle: .title1)
         spinButton.setTitleColor(.label, for: .normal)
-        spinButton.backgroundColor = UIColor(named: "buttonBackgroundColor")
+        spinButton.backgroundColor = Colors.buttonBackground
         spinButton.layer.cornerRadius = 10
         spinButton.addTarget(self, action: #selector(spinButtonTapped), for: .touchUpInside)
     }

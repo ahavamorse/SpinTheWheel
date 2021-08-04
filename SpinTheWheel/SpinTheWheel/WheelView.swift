@@ -17,7 +17,7 @@ class WheelView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.clear
+        backgroundColor = Colors.clearBackground
     }
     
     required init?(coder: NSCoder) {
@@ -39,7 +39,7 @@ class WheelView: UIView {
             
             var currentAngle = -0.5 * .pi + (angleIncrement / 2)
 
-            let colors = [UIColor.init(named: "wheelLightBackgroundColor")!.cgColor, UIColor.init(named: "wheelDarkBackgroundColor")!.cgColor]
+            let colors = [Colors.wheelLightSection.cgColor, Colors.wheelDarkSection.cgColor]
             
             for i in 0...rewards.count - 1 {
                 let endAngle = currentAngle + angleIncrement

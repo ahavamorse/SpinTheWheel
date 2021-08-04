@@ -31,7 +31,7 @@ class MenuViewController: UIViewController {
     }
     
     private func configureViewController() {
-        view.backgroundColor = UIColor(named: "viewBackgroundColor")
+        view.backgroundColor = Colors.viewBackground
     }
     
     private func configureTitleLabel() {
