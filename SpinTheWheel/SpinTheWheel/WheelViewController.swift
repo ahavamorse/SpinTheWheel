@@ -15,6 +15,7 @@ class WheelViewController: UIViewController {
     let spinButton = UIButton(type: .system)
     
     var wheelController: WheelController!
+    var currentRewardIndex: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +91,11 @@ class WheelViewController: UIViewController {
         // Always spin at least twice
         var segmentSpinLength = 2 * Int(numOfSections!)
         // Spin an aditional random number of segments
-        segmentSpinLength += Int.random(in: 0...Int(numOfSections! - 1))
+        let rewardIndex = Int.random(in: 0...Int(numOfSections! - 1))
+        segmentSpinLength += 8 - rewardIndex
+        
+        currentRewardIndex += rewardIndex
+        currentRewardIndex %= Int(numOfSections!)
         
         UIView.animate(withDuration: 2.5, animations: { [weak self] in
             guard let self = self else { return }
@@ -105,7 +110,10 @@ class WheelViewController: UIViewController {
             }
         }) { [weak self] _ in
             guard let self = self else { return }
-//            self.displayReward()
+            let reward = self.wheelController.wheelView.rewards[self.currentRewardIndex]
+            let alert = UIAlertController(title: "You Won!", message: "Congradulations! You won a reward of \(reward.value) \(reward.currency).", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yay!", style: .default, handler: nil))
+            self.navigationController?.present(alert, animated: true)
         }
     }
     
