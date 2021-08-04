@@ -12,8 +12,8 @@ class WheelView: UIView {
     
     var rewards: [Reward]!
     var currentAngle: CGFloat = 0
-    var numOfSections: CGFloat = 0
-    var angleIncrement: CGFloat = 0
+    var numOfSections: CGFloat!
+    var angleIncrement: CGFloat!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,7 +28,7 @@ class WheelView: UIView {
         self.init(frame: .zero)
         self.rewards = rewards
         self.numOfSections = CGFloat(rewards.count)
-        self.angleIncrement = .pi / (numOfSections / 2)
+        self.angleIncrement = (2 * .pi) / numOfSections
     }
     
     override func draw(_ rect: CGRect) {
@@ -62,17 +62,19 @@ class WheelView: UIView {
         let numeralDistanceFromCenter = rect.size.width / 2.0 - 30
         
         for i in 0...rewards.count - 1 {
-            let displayString = rewards[i].displayText
+            let reward = rewards[i]
+            let displayString = reward.displayText
+            let angle = angleIncrement * CGFloat(i) - (.pi / 2)
             
-            let xPosition = center.x + (cos(CGFloat(i) * angleIncrement) * numeralDistanceFromCenter)
-            let yPosition = center.y + (sin(CGFloat(i) * angleIncrement) * numeralDistanceFromCenter)
+            let xPosition = center.x + (cos(angle) * numeralDistanceFromCenter)
+            let yPosition = center.y + (sin(angle) * numeralDistanceFromCenter)
             
             let label = UILabel(frame: .zero)
             label.text = displayString
             label.font = .preferredFont(forTextStyle: .body)
             label.textColor = .white
             
-            label.transform = CGAffineTransform(rotationAngle: CGFloat(i) * angleIncrement)
+            label.transform = CGAffineTransform(rotationAngle: angle)
             
             addSubview(label)
             label.translatesAutoresizingMaskIntoConstraints = false
